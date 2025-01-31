@@ -45,13 +45,11 @@ public class ApplicationRunner {
         int cardChoice = scanner.nextInt();
         scanner.nextLine();
 
-        LoyaltyCard loyaltyCard = null;
-
-        if (cardChoice == 1) {
-            loyaltyCard = new PensionCard();
-        } else if (cardChoice == 2) {
-            loyaltyCard = new RegularCard();
-        }
+        LoyaltyCard loyaltyCard = switch (cardChoice) {
+            case 1 -> new PensionCard();
+            case 2 -> new RegularCard();
+            default -> null;
+        };
 
         System.out.println("Select time of purchase:");
         System.out.println("1. Before 20:00 PM");
